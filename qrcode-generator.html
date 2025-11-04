@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼图游戏二维码生成器</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-lg p-6 max-w-md w-full">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">拼图游戏二维码</h1>
+        
+        <div class="mb-6">
+            <label for="url-input" class="block text-gray-700 mb-2">游戏网址:</label>
+            <div class="flex">
+                <input type="text" id="url-input" class="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" value="http://localhost:8000" placeholder="输入游戏网址">
+                <button id="generate-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg">生成</button>
+            </div>
+        </div>
+        
+        <div class="flex justify-center mb-6">
+            <div id="qrcode" class="p-4 bg-white rounded-lg shadow"></div>
+        </div>
+        
+        <div class="text-center text-gray-600">
+            <p>使用手机扫描上方二维码打开游戏</p>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <p class="text-sm text-gray-500">提示: 确保手机和运行游戏的电脑在同一网络</p>
+        </div>
+    </div>
+
+    <script>
+        // 生成二维码
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlInput = document.getElementById('url-input');
+            const generateBtn = document.getElementById('generate-btn');
+            const qrcodeContainer = document.getElementById('qrcode');
+            
+            // 初始生成
+            generateQRCode(urlInput.value);
+            
+            // 点击生成按钮
+            generateBtn.addEventListener('click', function() {
+                generateQRCode(urlInput.value);
+            });
+            
+            // 按Enter键生成
+            urlInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    generateQRCode(urlInput.value);
+                }
+            });
+            
+            function generateQRCode(url) {
+                // 清空容器
+                qrcodeContainer.innerHTML = '';
+                
+                // 生成二维码
+                QRCode.toCanvas(qrcodeContainer, url, {
+                    width: 200,
+                    margin: 1,
+                    color: {
+                        dark: '#000000',
+                        light: '#ffffff'
+                    }
+                }, function(error) {
+                    if (error) {
+                        qrcodeContainer.innerHTML = '<p class="text-red-500">生成二维码时出错</p>';
+                        console.error(error);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

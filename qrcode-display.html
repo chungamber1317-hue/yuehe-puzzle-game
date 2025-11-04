@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>悅和醬園拼圖游戲 - 二維碼</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-lg p-6 max-w-md w-full">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">悅和醬園拼圖游戲</h1>
+        
+        <div class="flex justify-center mb-6">
+            <div class="p-4 bg-orange-50 rounded-lg shadow-lg">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/f4ce8ad4d7764054820a17f627222bec~tplv-a9rns2rl98-image.image?rcl=20251104163119F51C7CA0E978CE56AEE3&rk3s=8e244e95&rrcfp=f06b921b&x-expires=1764837096&x-signature=%2BIWiAs1MK9DSeZakjx2A28D36jk%3D" 
+                     alt="拼圖游戲二維碼" 
+                     class="w-48 h-48 object-contain">
+            </div>
+        </div>
+        
+        <div class="text-center text-gray-600">
+            <p class="mb-4 text-lg">請使用手機掃描上方二維碼打開游戲</p>
+            
+            <div class="bg-orange-50 p-4 rounded-lg mb-4">
+                <p class="font-bold text-primary">使用說明：</p>
+                <ol class="list-decimal list-inside mt-2 text-left">
+                    <li>確保您的手機和電腦在同一網絡</li>
+                    <li>在手機上打開相機應用</li>
+                    <li>對準二維碼進行掃描</li>
+                    <li>點擊彈出的鏈接打開游戲</li>
+                </ol>
+            </div>
+            
+            <p class="text-sm text-gray-500">如果無法掃描，請手動輸入網址：</p>
+            <div class="mt-2 p-2 bg-gray-100 rounded text-sm font-mono break-all">
+                http://localhost:8000
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="index.html" class="inline-block bg-gradient-to-r from-orange-500 to-brown-600 hover:from-orange-600 hover:to-brown-700 text-white px-6 py-2 rounded-lg transition-colors duration-300">
+                直接打開游戲
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 自动检测并显示本地IP地址
+        document.addEventListener('DOMContentLoaded', function() {
+            // 在实际部署时，这里可以替换为您的公网IP或域名
+            const defaultUrl = 'http://localhost:8000';
+            document.querySelector('.font-mono').textContent = defaultUrl;
+        });
+    </script>
+</body>
+</html>
