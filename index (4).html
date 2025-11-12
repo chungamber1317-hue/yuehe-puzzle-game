@@ -1,0 +1,513 @@
+<html lang="zh-Hant"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>悅和醬園 - 三代人的香港味道</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B4513',
+                        secondary: '#D2B48C',
+                        accent: '#CD853F',
+                        light: '#F5F5DC',
+                        dark: '#3E2723'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                        serif: ['Noto Serif TC', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .text-shadow-sm {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            }
+        }
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #F5F5DC;
+            color: #3E2723;
+        }
+        
+        .story-section {
+            min-height: 100vh;
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .story-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #F5F5DC);
+            pointer-events: none;
+        }
+        
+        .vintage-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .vintage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .vintage-img {
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .vintage-img img {
+            transition: transform 0.5s ease;
+        }
+        
+        .vintage-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #8B4513;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #CD853F;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .right::after {
+            left: -16px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        .gift-box {
+            perspective: 1000px;
+        }
+        
+        .gift-box-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .gift-box:hover .gift-box-inner {
+            transform: rotateY(10deg) rotateX(10deg);
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .section-divider {
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%238B4513" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,192C384,192,480,160,576,138.7C672,117,768,107,864,122.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1638054046642864132~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1777801225&amp;x-signature=AeGnKbZjq4jLenmsdM7faQ1ODDk%3D" alt="醬缸" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 text-shadow">悅和醬園</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold text-white mb-8 text-shadow-sm">三代人的香港味道</h2>
+            <p class="text-xl text-white max-w-2xl mx-auto mb-10">一個關於堅持、傳承與創新的香港本土故事</p>
+            <a href="#story-start" class="inline-block bg-primary hover:bg-accent text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+                開始探索 <i class="fa fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="story-start" class="story-section bg-light py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="vintage-img">
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/c759dd061f924300b8fa94f6ab579c5d.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=20251104180703B5A415BB0DE4A360431B&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1762855623&amp;x-signature=dxGb6lJiFODCQ87R5NCBomWImIA%3D" alt="香港醬園" class="w-full h-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-bold text-primary mb-6">關於悅和醬園</h2>
+                    <p class="text-lg mb-4">講好香港的故事：傳承與地道風味</p>
+                    <p class="text-lg mb-4">面對時代快速變遷挑戰，在荃灣以實際行動演活獅子山精神，悅和醬園的共同創辦人龐堯及其後代正代表香港傳承的精神。</p>
+                    <p class="text-lg">故事始於上世紀30年代末，20出頭的龐老先生因戰亂從佛山走難來港，本著做生不如做熟的心態，集合差不多同期到港的同鄉合資，運用佛山自清乾隆年間便聞名於世的傳統醬料釀造技術開設醬園。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section - 三代人的故事 -->
+    <section class="story-section py-20 bg-[url('https://p11-doubao-search-sign.byteimg.com/labis/e315e02724c29ac0c1a7b0cdc6f059ae~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1777801224&amp;x-signature=%2Fl1%2Bgh6EkoTpKG4mZ5cGx7g%2BVvU%3D')] bg-cover bg-fixed bg-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-16">三代人的堅持與傳承</h2>
+            
+            <div class="timeline">
+                <!-- 第一代 -->
+                <div class="timeline-container left">
+                    <div class="timeline-content vintage-card">
+                        <h3 class="text-2xl font-bold text-primary mb-3">第一代：逃難來港，植根荃灣</h3>
+                        <p class="text-gray-700 mb-4">1942年，醬園剛開始營運便因香港淪陷而停產，至1945年香港重光才正式註冊，隨著戰後工業發展，業務亦漸上軌道。</p>
+                        <p class="text-gray-700">「以前交通唔方便，幾乎每區都有自己嘅醬園。大部分舊區如九龍城、長沙灣，甚至西環等都有人曬豉油，大家各自做街坊生意，足夠養家，但一定唔會發達。」</p>
+                    </div>
+                </div>
+                
+                <!-- 第二代 -->
+                <div class="timeline-container right">
+                    <div class="timeline-content vintage-card">
+                        <h3 class="text-2xl font-bold text-primary mb-3">第二代：拒絕北上，提升質素</h3>
+                        <p class="text-gray-700 mb-4">回顧80、90年代經濟轉型，大量香港工業為降低經營成本選擇北移，龐老先生卻堅持留守香港，一來怕兩地奔走難以親自管理；二來並沒有擴充業務的野心，只想專注服務香港的客戶。</p>
+                        <p class="text-gray-700">第二代傳人接手後，便嘗試從品質管理入手，將醬園所有產品的生產過程全面系統化，更成功取得香港品質保證局頒發的「ISO 9001」及「HACCP」認證。</p>
+                    </div>
+                </div>
+                
+                <!-- 第三代 -->
+                <div class="timeline-container left">
+                    <div class="timeline-content vintage-card">
+                        <h3 class="text-2xl font-bold text-primary mb-3">第三代：變革醬園，創新發展</h3>
+                        <p class="text-gray-700 mb-4">80後的Jack在2016年正式加入醬園，從低做起，了解產品的生產流程及醬園日常運作後，才慢慢加入自己的意見和計劃。</p>
+                        <p class="text-gray-700">他成功加設有機產品生產線，獲得有機認證，並研發無麩質豉油，同時積極拓展零售市場，開設網上商店，讓這個老字號品牌煥發新的生機。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 传统工艺 Section -->
+    <section class="story-section bg-light py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-16">傳統工藝的堅持</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 工艺步骤 1 -->
+                <div class="vintage-card p-6">
+                    <div class="vintage-img mb-4 h-48 overflow-hidden">
+                        <img src="https://p3-doubao-search-sign.byteimg.com/labis/d7fc032a3eebbc5904f9384c1b7fdb08~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1777801224&amp;x-signature=8QBMqezztxWaqCYZncMuWkrL8V4%3D" alt="煮黃豆" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">蒸煮黃豆</h3>
+                    <p class="text-gray-700">廠房每朝七點開始運作，日程一律由煮黃豆開始，份量由一千公斤起跳。選用加拿大非基因改造黃豆，確保品質穩定。</p>
+                </div>
+                
+                <!-- 工艺步骤 2 -->
+                <div class="vintage-card p-6">
+                    <div class="vintage-img mb-4 h-48 overflow-hidden">
+                        <img src="https://p3-doubao-search-sign.byteimg.com/labis/82d58c7b493f2b6a20e0955c1a5086d3~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1777801225&amp;x-signature=6wOuea0nSQwkd7kDivTKKG0Qxtc%3D" alt="發酵" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">發酵過程</h3>
+                    <p class="text-gray-700">煮好的黃豆要加入麵粉和酵母發酵，發酵房的溫度十分重要，冬天要用暖爐提升溫度，確保酵母菌處於活躍狀態。</p>
+                </div>
+                
+                <!-- 工艺步骤 3 -->
+                <div class="vintage-card p-6">
+                    <div class="vintage-img mb-4 h-48 overflow-hidden">
+                        <img src="https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1638054046629363734~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1777801225&amp;x-signature=bvXttsRCxz28mNJ%2BfigcS%2BkR4X8%3D" alt="曬豉油" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">天然生曬</h3>
+                    <p class="text-gray-700">廠房天台是曬豉油的地方，傳統醬缸大部分已被容量更大更耐用的不銹鋼缸取代。古法釀製的豉油顏色全部來自被太陽曬至焦糖化的黃豆本身。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 品牌特色 Section -->
+    <section class="story-section py-20 bg-[url('https://p11-doubao-search-sign.byteimg.com/labis/e315e02724c29ac0c1a7b0cdc6f059ae~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&amp;x-expires=1777801224&amp;x-signature=%2Fl1%2Bgh6EkoTpKG4mZ5cGx7g%2BVvU%3D')] bg-cover bg-fixed bg-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-16">品牌特色</h2>
+            
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-12">
+                    <h3 class="text-2xl font-bold text-primary mb-4">百份百香港製造</h3>
+                    <p class="text-lg mb-4">悅和是全港唯一一間採用自家米酒發酵成醋的醬園，不像其他品牌需依賴第三方供應釀醋最重要的原材料。</p>
+                    <p class="text-lg mb-4">悅和的米酒以泰國、越南米蒸餾而成，所有工序均在香港完成，無論酒還是醋，均是百份百香港製造。</p>
+                    <p class="text-lg">「香港製造係一個由唔同界別匠人努力樹立嘅金漆招牌，起碼到今時今日都未有關於香港製造嘅黑心食品或者負面新聞，對於消費者都係一種信心保證。」</p>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="vintage-img">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/59655c2ae781406796adf98774cfa3ec~tplv-a9rns2rl98-image.image?rcl=20251104173949CEA68923546456E68793&amp;rk3s=8e244e95&amp;rrcfp=f06b921b&amp;x-expires=1764841247&amp;x-signature=LaGq0uaZryHIvhW8MvtFw1OuClE%3D" alt="三代人" class="w-full h-auto rounded-lg shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 创新与未来 Section -->
+    <section class="story-section bg-light py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-16">創新與未來</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="vintage-card p-6">
+                    <h3 class="text-2xl font-bold text-primary mb-4">有機產品系列</h3>
+                    <p class="text-lg mb-4">2016年加入醬園後，Jack到過醬園各部門學師，慢慢開始加入改革想法。他成功加設有機產品生產線，更於2018年獲香港有機資源中心頒發國際IFOAM認可「有機加工處理認證」，同年亦被商界環保協會評為「可持續產品供應商」。</p>
+                </div>
+                
+                <div class="vintage-card p-6">
+                    <h3 class="text-2xl font-bold text-primary mb-4">品牌年輕化</h3>
+                    <p class="text-lg mb-4">根據非正式街市行情調查，悅和的知名度一直不高，主要因為品牌以往偏重餐飲批發業務，缺乏零售層面的宣傳。至去年把心一橫大裝修，又開辦網上商店，增設社交媒體專頁，鮮明的「豉油佬」形象才開始入屋，更有年輕顧客以為悅和是全新品牌！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 感谢与赠品 Section -->
+    <section class="story-section bg-primary py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="gift-box">
+                        <div class="gift-box-inner">
+                            <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/f1b9bd87c7664d549fe724ab2df129d2.png~tplv-a9rns2rl98-24:720:720.image?rcl=20251104180703B5A415BB0DE4A360431B&amp;rk3s=8e244e95&amp;rrcfp=8a172a1a&amp;x-expires=1762855623&amp;x-signature=TgxKZnPA0ASZrQ5G3FBtUISeuG4%3D" alt="迷你醬料禮盒" class="w-full h-auto rounded-lg shadow-xl">
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12 text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-white mb-6 text-shadow">感謝您花時間觀看我們的故事</h2>
+                    <p class="text-xl text-light mb-8">為了感謝您的支持，我們誠意贈送您</p>
+                    <p class="text-2xl font-bold text-white mb-10 text-shadow" style="font-size: 32px; color: rgb(252, 56, 56);">迷你醬料禮盒一套</p>
+                    <p class="text-lg text-light mb-8">這款禮盒包含我們的經典產品【三絕混醬：甜醬、花生醬、芝麻醬】，讓您可以在家中輕鬆享受香港傳統醬料的獨特風味。</p>
+                    <a href="#" class="inline-block bg-light hover:bg-secondary text-primary font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        立即領取 <i class="fa fa-gift ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2" style="font-size: 20px;">悅和醬園【三代人傳承的香港味道】</h3>
+                    <p class="text-light" style="font-size: 11px;">網址：https://www.yuetwo.hk/shop/index.php?route=product/category&amp;path=60</p>
+                </div>
+                <div class="mb-6 md:mb-0">
+                    <p class="text-light mb-2" style="font-size: 14px;">地址：荃灣街市街33號地下</p>
+                    <p class="text-light" style="font-size: 14px;">電話：2492 3354</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-light hover:text-secondary transition duration-300">
+                        <i class="fa fa-facebook-square text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-light hover:text-secondary transition duration-300">
+                        <i class="fa fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-light hover:text-secondary transition duration-300">
+                        <i class="fa fa-globe text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-light">© 2025 悅和醬園. 保留所有權利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add parallax effect to background images
+            window.addEventListener('scroll', function() {
+                const parallaxSections = document.querySelectorAll('section[class*="bg-cover"]');
+                parallaxSections.forEach(section => {
+                    const offset = window.pageYOffset;
+                    section.style.backgroundPositionY = offset * 0.5 + 'px';
+                });
+            });
+            
+            // Gift box animation on hover
+            const giftBox = document.querySelector('.gift-box');
+            if (giftBox) {
+                giftBox.addEventListener('mouseenter', function() {
+                    this.querySelector('.gift-box-inner').style.transform = 'rotateY(20deg) rotateX(20deg)';
+                });
+                
+                giftBox.addEventListener('mouseleave', function() {
+                    this.querySelector('.gift-box-inner').style.transform = 'rotateY(0) rotateX(0)';
+                });
+            }
+            
+            // Add interactive elements
+            const timelineItems = document.querySelectorAll('.timeline-content');
+            timelineItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+                });
+            });
+        });
+    </script>
+
+
+</body></html>
